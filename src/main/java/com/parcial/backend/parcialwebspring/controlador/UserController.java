@@ -10,9 +10,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
-    @GetMapping(value = "/")
-    public String home() {
+    
+    @GetMapping("/")
+    public String home(){
         return "Index";
+    }
+    @GetMapping("/aspirante.html")
+    public String ingresoAs(){
+        return "aspirante/aspirante";   
+    }
+    @GetMapping("/administrador.html")
+    public String ingresoAd(){
+        return "administrador/administrador";   
+    }
+    @GetMapping("buscarOferta.html")
+    public String buscarOferta(){
+        return "buscarOferta"; 
+    }
+    @GetMapping("crearEmpresa.html")
+    public String crearEmpresa(){
+        return "administrador/crearEmpresa"; 
+    }
+    @GetMapping("crearOferta.html")
+    public String crearOferta(){
+        return "administrador/crearOferta"; 
+    }
+    @GetMapping("modificadorOferta.html")
+    public String modificarOferta(){
+        return "administrador/modificarOferta"; 
     }
 
     @PostMapping(value = "/login")
@@ -21,7 +46,6 @@ public class UserController {
             @RequestParam(name = "passLogin", required = true, defaultValue = "no envio nada") String password,
             @RequestParam(name = "tipologin", required = true, defaultValue = "no envio nada") String tipo) {
         System.out.println(user + "  " + password + " " + tipo);
-        Login controladorLogin = Login.getLogin();
         return "se logueo";
     }
 
@@ -33,5 +57,5 @@ public class UserController {
         System.out.println(user + "  " + password);
         return "se registro";
     }
-
+    
 }
