@@ -1,0 +1,40 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background: url("/imagenes/fondoN.jpg");
+  min-height: 100%; 
+}
+
+button {
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background: #797D7F;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+}
+
+.header {
+    color: black;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    margin-top: 20px;
+    padding: 10px;
+    color:  #797D7F;
+}
+
