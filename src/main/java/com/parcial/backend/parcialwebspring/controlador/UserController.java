@@ -1,7 +1,5 @@
 package com.parcial.backend.parcialwebspring.controlador;
 
-import com.parcial.backend.parcialwebspring.services.Prueba;
-
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,23 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @GetMapping("/")
     public String home(){
-        return "Home";
+        return "login/Index";
     }
-    @GetMapping("/login")
-    public String login(){
-        return "Login";
-    }
-    
+  
     @PostMapping("/prueba")
     public String verifyLogin(@RequestParam(name = "user", required = false, defaultValue = "no envio nada") String user, @RequestParam(name = "pass", required = false, defaultValue = "no envio nada") String password){
-        Prueba xd = new Prueba();
-        if(xd.verifyL(user, password)){
-            return "Login";
-        }else{
-            return "<h1>Intente Nuevamente</h1>";
-        }
-
+        return "";
     }
+
     @RequestMapping("Login")
       public String postBody(@RequestBody String fullName) {
         return "Hello " + fullName;
