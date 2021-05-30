@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
@@ -21,13 +22,17 @@ public class UserController {
         return "Login";
     }
     
-    @PostMapping("/prueba")
+    @PostMapping("/")
+    //@ResponseBody
     public String verifyLogin(@RequestParam(name = "user", required = false, defaultValue = "no envio nada") String user, @RequestParam(name = "pass", required = false, defaultValue = "no envio nada") String password){
-        Prueba xd = new Prueba();
+        
+        /*Prueba xd = new Prueba();
         if(xd.verifyL(user, password)){
             return "Login";
         }else{
             return "<h1>Intente Nuevamente</h1>";
-        }
+        }*/
+        
+        return "Home";
     }
 }
