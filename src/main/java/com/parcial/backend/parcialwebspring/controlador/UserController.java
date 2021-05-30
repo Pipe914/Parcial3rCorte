@@ -14,27 +14,32 @@ public class UserController {
     }
     @GetMapping("/aspirante")
     public String ingresoAs(){
-        return "aspirante";   
+        return "aspirante/aspirante";   
     }
-    @GetMapping("/administradoe")
+    @GetMapping("/administrador")
     public String ingresoAd(){
-        return "administrador";   
+        return "administrador/administrador";   
     }
-    @GetMapping("/buscarOferta")
-    public String buscarOferta(){
+    @GetMapping("/buscarOfertaAdministrador")
+    public String buscarOfertaAdministrador(){
+        return "buscarOferta"; 
+    }  
+    
+    @GetMapping("/buscarOfertaAspirante")
+    public String buscarOfertaAspirante(){
         return "buscarOferta"; 
     }
-    @GetMapping("/crearEmpresa")
+    @GetMapping("administrador/crearEmpresa.html")
     public String crearEmpresa(){
-        return "crearEmpresa"; 
+        return "administrador/crearEmpresa"; 
     }
-    @GetMapping("/crearOferta")
+    @GetMapping("administrador/crearOferta")
     public String crearOferta(){
-        return "crearOferta"; 
+        return "administrador/crearOferta"; 
     }
-    @GetMapping("/modificarOferta")
+    @GetMapping("administrador/modificarOferta")
     public String modificarOferta(){
-        return "modificarOferta"; 
+        return "administrador/modificarOferta"; 
     }
     
 
