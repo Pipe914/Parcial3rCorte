@@ -12,13 +12,13 @@
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
-      <a href="redes.html" class="w3-bar-item w3-button w3-wide"> ADMINISTRADOR</a>
+      <a href="administrador.html" class="w3-bar-item w3-button w3-wide"> ADMINISTRADOR</a>
       <!-- Right-sided navbar links -->
       <div class="w3-right w3-hide-small">
-        <a href="crearOferta.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> GESTIÓN EMPRESAS</a>
+        <a href="crearEmpresa.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> GESTIÓN EMPRESAS</a>
         <a href="crearOferta.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> GESTIÓN OFERTAS</a>
-        <a href="buscarOferta.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> BUSCAR OFERTA</a>
-        <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> MODIFICAR OFERTA</a>
+        <a href="buscarOfertaAdmin.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> BUSCAR OFERTA</a>
+        <a href="modificarOferta" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> MODIFICAR OFERTA</a>
       </div>
       <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -36,6 +36,7 @@
     <a href="crearEmpresa.html" onclick="w3_close()" class="w3-bar-item w3-button">GESTION EMPRESAS</a>
     <a href="crearOferta.html" onclick="w3_close()" class="w3-bar-item w3-button">GESTION OFERTAS</a>
     <a href="buscarOfertaAdmin.html" onclick="w3_close()" class="w3-bar-item w3-button">BUSCAR OFERTA</a>
+    <a href="modificarOferta" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> MODIFICAR OFERTA</a>
 
 
   </nav>
@@ -93,7 +94,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="well well-sm">
-            <form th:action="@{/añadirEmpresaEmpresa}" class="form-horizontal" method="post">
+            <form th:action="@{/anadirEmpresaEmpresa}" class="form-horizontal" method="post">
               <fieldset>
                 <form class="form-horizontal" method="post">
                   <fieldset>

@@ -36,14 +36,14 @@ public class UserController {
 
     @GetMapping("/buscarOfertaAspirante.html")
     public String buscarOfertaAspirante() {
-        return "/aspirante/BuscarOferta";
+        return "/aspirante/buscarOfertaAspirante";
     }
 
     @GetMapping("/buscarOfertaAdmin.html")
     public String buscarOfertaAdmin() {
         return "/administrador/buscarOfertaAdmin";
     }
-    
+
     @GetMapping("/crearEmpresa.html")
     public String crearEmpresa() {
         return "administrador/crearEmpresa";
@@ -54,7 +54,7 @@ public class UserController {
         return "administrador/crearOferta";
     }
 
-    @GetMapping("/modificadorOferta.html")
+    @GetMapping("/modificarOferta.html")
     public String modificarOfertaVista() {
         return "administrador/modificarOferta";
     }
@@ -68,9 +68,16 @@ public class UserController {
             RedirectAttributes redirectAttrs) {
         key = proxy.verifyLogin(user, username, password);
         if (!key.equals("")) {
-            redirectAttrs.addFlashAttribute("mensaje", "Ha ingresado correctamente!!").addFlashAttribute("clase",
-                    "success");
-            return "redirect:/administrador.html";
+            if (user.getTipoUsuario().equals("Tipo: Admin")) {
+                redirectAttrs.addFlashAttribute("mensaje", "Ha ingresado correctamente!! " +user.getUsername()).addFlashAttribute("clase",
+                        "success");
+                return "redirect:/administrador.html";
+            } else {
+                redirectAttrs.addFlashAttribute("mensaje", "Ha ingresado correctamente!! "+ user.getUsername()).addFlashAttribute("clase",
+                        "success");
+                return "redirect:/aspirante.html";
+            }
+
         } else {
             redirectAttrs.addFlashAttribute("mensaje", "Registro fallido, intente nuevamente")
                     .addFlashAttribute("clase", "success");
@@ -157,7 +164,7 @@ public class UserController {
     @PostMapping(value = "/modificarOferta")
     public String modificarOferta(@RequestParam(name = "id", required = true) String id,
             @RequestParam(name = "opcion", required = true) String opcion,
-            @RequestParam(name = "descipcion", required = true) String descripcion, RedirectAttributes redirectAttrs) {
+            @RequestParam(name = "descripcion", required = true) String descripcion, RedirectAttributes redirectAttrs) {
 
         String response = AESEncript.decrypt(
                 controlador.action(AESEncript.encrypt("6/" + key + "/" + opcion + "/" + id + "/" + descripcion)));
@@ -165,10 +172,10 @@ public class UserController {
 
         if (response.equals("Se ha añadido la propiedad correctamente")) {
             redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
-            return "redirect:/modificadorOferta.html";
+            return "redirect:/modificarOferta.html";
         } else {
             redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
-            return "redirect:/modificadorOferta.html";
+            return "redirect:/modificarOferta.html";
         }
     }
 
@@ -176,8 +183,8 @@ public class UserController {
     public String anadirEmpresaEmpresa(@RequestParam(name = "nit1", required = true) String nit1,
             @RequestParam(name = "nit2", required = true) String nit2, RedirectAttributes redirectAttrs) {
 
-        String response = AESEncript.decrypt(
-                controlador.action(AESEncript.encrypt("7/" + key + "/" + nit1 + "/" + nit2)));
+        String response = AESEncript
+                .decrypt(controlador.action(AESEncript.encrypt("7/" + key + "/" + nit1 + "/" + nit2)));
         System.out.println(response);
 
         if (response.equals("Se ha añadido la empresa correctamente")) {
@@ -193,8 +200,7 @@ public class UserController {
     public String anadirOfertaEmpresa(@RequestParam(name = "nit", required = true) String nit,
             @RequestParam(name = "id", required = true) String id, RedirectAttributes redirectAttrs) {
 
-        String response = AESEncript.decrypt(
-                controlador.action(AESEncript.encrypt("8/" + key + "/" + nit + "/" + id)));
+        String response = AESEncript.decrypt(controlador.action(AESEncript.encrypt("8/" + key + "/" + nit + "/" + id)));
         System.out.println(response);
 
         if (response.equals("Se ha añadido la empresa correctamente")) {
@@ -207,36 +213,37 @@ public class UserController {
     }
 
     @PostMapping(value = "/buscarOfertaAspirante")
-    public String buscarOfertaAspirante(
-        @RequestParam(name = "nit", required = true) String nit, RedirectAttributes redirectAttrs) {
+    public String buscarOfertaAspirante(@RequestParam(name = "nit", required = true) String nit,
+            RedirectAttributes redirectAttrs) {
 
-        String response = AESEncript.decrypt(controlador.action(AESEncript.encrypt("9/"+key+"/"+nit)));
+        String response = AESEncript.decrypt(controlador.action(AESEncript.encrypt("9/" + key + "/" + nit)));
         System.out.println(response);
 
         if (response.equals("La empresa no se encuentra registrada.")
                 || response.equals("La sesion no existe, ha caducado.")) {
-                    redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
-                    return "redirect:/buscarOfertaAspirante.html";
+            redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
+            return "redirect:/buscarOfertaAspirante.html";
         } else {
             redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
             return "redirect:/buscarOfertaAspirante.html";
         }
     }
-    @PostMapping(value = "/buscarOfertaAdmin")
-    public String buscarOfertaAdmin(
-        @RequestParam(name = "nit", required = true) String nit, RedirectAttributes redirectAttrs) {
 
-        String response = AESEncript.decrypt(controlador.action(AESEncript.encrypt("9/"+key+"/"+nit)));
+    @PostMapping(value = "/buscarOfertaAdmin")
+    public String buscarOfertaAdmin(@RequestParam(name = "nit", required = true) String nit,
+            RedirectAttributes redirectAttrs) {
+
+        String response = AESEncript.decrypt(controlador.action(AESEncript.encrypt("9/" + key + "/" + nit)));
         System.out.println(response);
 
         if (response.equals("La empresa no se encuentra registrada.")
                 || response.equals("La sesion no existe, ha caducado.")) {
-                    redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
-                    return "redirect:/buscarOfertaAdmin.html";
+            redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
+            return "redirect:/buscarOfertaAdmin.html";
         } else {
             redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
             return "redirect:/buscarOfertaAdmin.html";
         }
     }
-    
+
 }
