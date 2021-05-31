@@ -17,8 +17,8 @@
         <div class="w3-right w3-hide-small">
           <a href="crearEmpresa.html" class="w3-bar-item w3-button"><i class="fa fa-building "></i> CREAR EMPRESA</a>
           <a href="crearOferta.html" class="w3-bar-item w3-button"><i class="fa fa-briefcase"></i> CREAR OFERTA</a>
-          <a href="buscarOferta.html" class="w3-bar-item w3-button"><i class="fa fa-search"></i> BUSCAR OFERTA</a>
-          <a href="modificarOferta.html" class="w3-bar-item w3-button"><i class="fa fa-pencil-square-o"></i> MODIFICAR OFERTA</a>
+          <a href="buscarOfertaAdmin.html" class="w3-bar-item w3-button"><i class="fa fa-search"></i> BUSCAR OFERTA</a>
+ 
           <a  class="w3-bar-item w3-button"><i class="fa fa-sign-out "></i> CERRAR SESION</a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -32,9 +32,9 @@
             <!-- Sidebar on small screens when clicking the menu icon -->
             <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
               <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-              <a href= "crearEmpresa.html" onclick="w3_close()" class="w3-bar-item w3-button">CREAR EMPRESA</a>
+              <a href="crearEmpresa.html" onclick="w3_close()" class="w3-bar-item w3-button">CREAR EMPRESA</a>
               <a href="crearOferta.html" onclick="w3_close()" class="w3-bar-item w3-button">CREAR OFERTA</a>
-              <a href="buscarOferta.html" onclick="w3_close()" class="w3-bar-item w3-button">BUSCAR OFERTA</a>
+              <a href="buscarOfertaAdmin.html" onclick="w3_close()" class="w3-bar-item w3-button">BUSCAR OFERTA</a>
               <a  class="w3-bar-item w3-button"><i class="fa fa-sign-out "></i> CERRAR SESION</a>
         
             </nav>
@@ -51,7 +51,7 @@
                             <div class="input-group">
                               <div class="form-outline">
                                 <label class="form-label" for="form1">BUSCAR OFERTA</label><br>
-                                <input id="search-input" type="search" id="form1" class="form-control" />
+                                <input id="search-input" type="search" class="form-control" />
                               </div>
                               <button id="search-button" type="button" class="btn btn-primary">
                                 <i class="fa fa-search"></i>

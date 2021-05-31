@@ -1,5 +1,6 @@
 package com.parcial.backend.parcialwebspring.entities;
 // Clase padre para implementar usuarios en la aplicacion
+
 public abstract class Usuario {
 // Variables globales para todos los elementos de tipo usuario
     protected String username;
