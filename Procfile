@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* bin.java.exe
+web: java -jar target/parcial-web-spring-0.0.1-SNAPSHOT.war
