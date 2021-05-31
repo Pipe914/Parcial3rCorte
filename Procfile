@@ -1,2 +1,2 @@
-web: java -jar -cp target/src/main/java/com/parcial/backend/parcialwebspring/ParcialWebSpringApplication.java-1.0.0.jar
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.example.org.springframework.boot
 src/main/java/com/parcial/backend/parcialwebspring/ParcialWebSpringApplication.java: main   
