@@ -172,8 +172,8 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/añadirEmpresaEmpresa")
-    public String añadirEmpresaEmpresa(@RequestParam(name = "nit1", required = true) String nit1,
+    @PostMapping(value = "/anadirEmpresaEmpresa")
+    public String anadirEmpresaEmpresa(@RequestParam(name = "nit1", required = true) String nit1,
             @RequestParam(name = "nit2", required = true) String nit2, RedirectAttributes redirectAttrs) {
 
         String response = AESEncript.decrypt(
@@ -189,8 +189,8 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/añadirOfertaEmpresa")
-    public String añadirOfertaEmpresa(@RequestParam(name = "nit", required = true) String nit,
+    @PostMapping(value = "/anadirOfertaEmpresa")
+    public String anadirOfertaEmpresa(@RequestParam(name = "nit", required = true) String nit,
             @RequestParam(name = "id", required = true) String id, RedirectAttributes redirectAttrs) {
 
         String response = AESEncript.decrypt(
