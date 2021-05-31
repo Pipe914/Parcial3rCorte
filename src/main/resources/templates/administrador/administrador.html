@@ -12,7 +12,10 @@
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
       <div class="w3-bar w3-white w3-card" id="myNavbar">
-        <a href="administrador.html" class="w3-bar-item w3-button w3-wide"> Administrador</a>
+        <a href="administrador.html" class="w3-bar-item w3-button w3-wide" > Administrador  
+        </a>
+        <a th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+                        th:text="${mensaje}" class="alert alert-success"></a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
           <a href="crearEmpresa.html" class="w3-bar-item w3-button"><i class="fa fa-building "></i> CREAR EMPRESA</a>
