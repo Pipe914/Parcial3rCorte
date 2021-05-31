@@ -23,6 +23,11 @@ public class UserController {
     public String home() {
         return "Index";
     }
+    
+    @GetMapping("/Index.html")
+    public String cerrarSesion() {
+        return "Index";
+    }
 
     @GetMapping("/aspirante.html")
     public String ingresoAs() {
@@ -86,7 +91,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/registro")
-    public String asdf(@RequestParam(name = "userRegistro", required = true) String username,
+    public String registro(@RequestParam(name = "userRegistro", required = true) String username,
             @RequestParam(name = "passRegistro", required = true) String password,
             @RequestParam(name = "tiporegistro", required = true) String tipo, RedirectAttributes redirectAttrs) {
         System.out.println(tipo);
