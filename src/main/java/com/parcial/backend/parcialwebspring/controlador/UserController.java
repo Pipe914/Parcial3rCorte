@@ -1,8 +1,5 @@
 package com.parcial.backend.parcialwebspring.controlador;
 
-import java.io.StringBufferInputStream;
-
-import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
 import com.parcial.backend.parcialwebspring.entities.Usuario;
 import com.parcial.backend.parcialwebspring.services.Facade;
 import com.parcial.backend.parcialwebspring.services.proxy.AESEncript;
@@ -12,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -52,33 +49,37 @@ public class UserController {
         return "administrador/crearOferta";
     }
 
-    @GetMapping("modificarOferta.html")
+    @GetMapping("modificadorOferta.html")
     public String modificarOfertaVista() {
         return "administrador/modificarOferta";
     }
 
     @PostMapping(value = "/login")
-    public String login(
-            @RequestParam(name = "userLogin", required = true, defaultValue = "no envio nada") String username,
-            @RequestParam(name = "passLogin", required = true, defaultValue = "no envio nada") String password,
-            @RequestParam(name = "tipologin", required = true, defaultValue = "no envio nada") String tipo) {
 
-        System.out.println(username + "  " + password + " " + tipo);
-        key = proxy.verifyLogin(user, username, password);
+    public String login(@RequestParam(name = "userLogin", required = true, defaultValue = "no envio nada") String username,
+            @RequestParam(name = "passLogin", required = true, defaultValue = "no envio nada") String password,
+            @RequestParam(name = "tipologin", required = true, defaultValue = "no envio nada") String tipo,
+            RedirectAttributes redirectAttrs) {
+            key = proxy.verifyLogin(user, username, password);
         if (!key.equals("")) {
-            return ingresoAd();
+            redirectAttrs.addFlashAttribute("mensaje", "Ha ingresado correctamente!!").addFlashAttribute("clase",
+                    "success");
+            return "redirect:/administrador.html";
         } else {
-            return home();
+            redirectAttrs.addFlashAttribute("mensaje", "Registro fallido, intente nuevamente")
+                    .addFlashAttribute("clase", "success");
+            return "redirect:/";
         }
     }
 
     @PostMapping(value = "/registro")
-    public String asdf(@RequestParam(name = "userRegistro", required = true, defaultValue = "") String username,
-            @RequestParam(name = "passRegistro", required = true, defaultValue = "") String password,
+    public String asdf(@RequestParam(name = "userRegistro", required = true) String username,
+            @RequestParam(name = "passRegistro", required = true) String password,
+            @RequestParam(name = "tiporegistro", required = true) String tipo,
             RedirectAttributes redirectAttrs) {
-        System.out.println(username + "  " + password);
+            System.out.println(tipo);
+            user = controlador.createUser(tipo, username, password);
 
-        user = controlador.createUser("1", username, password);
         if (user != null) {
             redirectAttrs.addFlashAttribute("mensaje", "Se ha registrado correctamente!!").addFlashAttribute("clase",
                     "success");
@@ -88,26 +89,23 @@ public class UserController {
                     .addFlashAttribute("clase", "success");
             return "redirect:/";
         }
-
     }
 
     @PostMapping(value = "/crearEmpresa")
     public String crearEmpresa(
-            @RequestParam(name = "nombre", required = true, defaultValue = "no envio nada") String nombre,
+            @RequestParam(name = "nameEmpresa", required = true, defaultValue = "no envio nombre") String name,
             @RequestParam(name = "nit", required = true, defaultValue = "no envio nada") String nit,
             @RequestParam(name = "direccion", required = true, defaultValue = "No envio") String direccion,
             RedirectAttributes redirectAttrs) {
 
-        System.out.println(nombre + "  " + nit + " " + direccion);
-        String response = AESEncript.decrypt(
-                controlador.action(AESEncript.encrypt("3/" + key + "/" + nombre + "/" + nit + "/" + direccion)));
+        String response = AESEncript.decrypt(controlador.action(AESEncript.encrypt("3/" + key+"/"+name+"/"+nit+"/"+direccion)));
         System.out.println(response);
         if (response.equals("La empresa se ha creado exitosamente")) {
-            redirectAttrs.addFlashAttribute("mensaje", "Empresa creada correctamente").addFlashAttribute("clase",
+            redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase",
                     "success");
             return "redirect:/crearEmpresa.html";
         } else {
-            redirectAttrs.addFlashAttribute("mensaje", "Operacion fallida. Razón: " + response)
+            redirectAttrs.addFlashAttribute("mensaje", response)
                     .addFlashAttribute("clase", "success");
             return "redirect:/crearEmpresa.html";
         }
@@ -121,11 +119,11 @@ public class UserController {
 
         if (response.equals("Usted no tiene acceso para realizar esta acción!!!")
                 || response.equals("La sesion no existe, ha caducado.")) {
-            redirectAttrs.addFlashAttribute("mensaje", "Registro de empresa fallido, intente nuevamente")
+            redirectAttrs.addFlashAttribute("mensaje", response)
                     .addFlashAttribute("clase", "success");
             return "redirect:/crearOferta.html";
         } else {
-            redirectAttrs.addFlashAttribute("mensaje", "Registro de empresa Exitoso").addFlashAttribute("clase",
+            redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase",
                     "success");
             return "redirect:/crearOferta.html";
         }
@@ -144,13 +142,13 @@ public class UserController {
         if (response.equals("Usted no tiene acceso para realizar esta acción!!!")
         || response.equals("La sesion no existe, ha caducado.")|| response== null) {
             // Mala
-            redirectAttrs.addFlashAttribute("mensaje", "Registro de empresa fallido, intente nuevamente")
+            redirectAttrs.addFlashAttribute("mensaje", response)
                     .addFlashAttribute("clase", "success");
             return "redirect:/crearOferta.html";
 
         } else {
             // && sueldo != null && tiempo != null && tipoContrato != null)
-            redirectAttrs.addFlashAttribute("mensaje", "Empresa creada correctamente").addFlashAttribute("clase", "success");
+            redirectAttrs.addFlashAttribute("mensaje", response).addFlashAttribute("clase", "success");
             return "redirect:/crearOferta.html";
         }
     }

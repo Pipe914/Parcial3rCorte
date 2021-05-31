@@ -6,18 +6,21 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/estiloAdmin.css" type="text/css">>
+    <link rel="stylesheet" href="css/estiloAdmin.css" type="text/css">
     <body>
     
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
       <div class="w3-bar w3-white w3-card" id="myNavbar">
-        <a href="administrador.html" class="w3-bar-item w3-button w3-wide"> Administrador</a>
+        <a href="administrador.html" class="w3-bar-item w3-button w3-wide" > Administrador  
+        </a>
+        <a th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+                        th:text="${mensaje}" class="alert alert-success"></a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
           <a href="crearEmpresa.html" class="w3-bar-item w3-button"><i class="fa fa-building "></i> CREAR EMPRESA</a>
           <a href="crearOferta.html" class="w3-bar-item w3-button"><i class="fa fa-briefcase"></i> CREAR OFERTA</a>
-          <a href="buscarOferta.html" class="w3-bar-item w3-button"><i class="fa fa-search"></i> BUSCAR OFERTA</a>
+          <a href="buscarOfertaAdmin.html" class="w3-bar-item w3-button"><i class="fa fa-search"></i> BUSCAR OFERTA</a>
           <a href="modificarOferta.html" class="w3-bar-item w3-button"><i class="fa fa-pencil-square-o"></i> MODIFICAR OFERTA</a>
           <a  class="w3-bar-item w3-button"><i class="fa fa-sign-out "></i> CERRAR SESION</a>
         </div>

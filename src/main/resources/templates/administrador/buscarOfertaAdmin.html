@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/estiloAdmin.css" type="text/css">
+    <link rel="stylesheet" href="css/estilos.css" type="text/css">
     <body>
     
     <!-- Navbar (sit on top) -->
@@ -18,7 +18,7 @@
           <a href="crearEmpresa.html" class="w3-bar-item w3-button"><i class="fa fa-building "></i> CREAR EMPRESA</a>
           <a href="crearOferta.html" class="w3-bar-item w3-button"><i class="fa fa-briefcase"></i> CREAR OFERTA</a>
           <a href="buscarOfertaAdmin.html" class="w3-bar-item w3-button"><i class="fa fa-search"></i> BUSCAR OFERTA</a>
- 
+          <a href="modificarOferta.html" class="w3-bar-item w3-button"><i class="fa fa-pencil-square-o"></i> MODIFICAR OFERTA</a>
           <a  class="w3-bar-item w3-button"><i class="fa fa-sign-out "></i> CERRAR SESION</a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -28,77 +28,30 @@
         </a>
       </div>
     </div>
-    
+
             <!-- Sidebar on small screens when clicking the menu icon -->
             <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
               <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
               <a href="crearEmpresa.html" onclick="w3_close()" class="w3-bar-item w3-button">CREAR EMPRESA</a>
               <a href="crearOferta.html" onclick="w3_close()" class="w3-bar-item w3-button">CREAR OFERTA</a>
               <a href="buscarOfertaAdmin.html" onclick="w3_close()" class="w3-bar-item w3-button">BUSCAR OFERTA</a>
+              <a href="modificarOfertaAdmin.html" onclick="w3_close()" class="w3-bar-item w3-button">MODIFICAR OFERTA</a>
               <a  class="w3-bar-item w3-button"><i class="fa fa-sign-out "></i> CERRAR SESION</a>
         
             </nav>
 
-    <!-- Oferta Completa-->
-    <div class="w3-container" style="padding:40px 16px" id="team">
-      <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well well-sm">
-                    <form class="form-horizontal" method="post">
-                        <fieldset>
-                          <div class="w3-container w3-light-grey" style="padding:70px 16px" id="BUS_OF">
-                            <div class="input-group">
-                              <div class="form-outline">
-                                <label class="form-label" for="form1">BUSCAR OFERTA</label><br>
-                                <input id="search-input" type="search" class="form-control" />
-                              </div>
-                              <button id="search-button" type="button" class="btn btn-primary">
-                                <i class="fa fa-search"></i>
-                              </button>
-                            </div>
-                          </div>
-                            <legend class="text-center header">MODIFICAR OFERTA</legend>
-    
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square bigicon"></i></span>
-                                <div class="col-6 col-md-4">
-                                    <input id="description_" name="descripcion" type="text" placeholder="Descripcion" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-money bigicon"></i></span>
-                                <div class="col-md-8">
-                                    <input id="sueldo_" name="sueldo" type="text" placeholder="Sueldo" class="form-control">
-                                </div>
-                            </div>
-    
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-clock-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    <input id="tiempo_of" name="tiempo" type="text" placeholder="Tiempo" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file-text-o bigicon"></i></span>
-                              <div class="col-md-8">
-                                  <input id="contra" name="contrato" type="text" placeholder="Tipo contrato" class="form-control">
-                              </div>
-                          </div>
-    
-    
-                            <div class="form-group">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
+
+            <div class="w3-container w3-light-grey" style="padding:70px 16px" id="BUS_OF">
+              <div class="input-group">
+                <div class="form-outline">
+                  <label class="form-label" for="form1">BUSCAR OFERTA</label><br>
+                  <input id="search-input" type="search"  class="form-control" />
                 </div>
+                <button id="search-button" type="button" class="btn btn-primary">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
             </div>
-        </div>
-    </div>
-    </div>
 
     
     
