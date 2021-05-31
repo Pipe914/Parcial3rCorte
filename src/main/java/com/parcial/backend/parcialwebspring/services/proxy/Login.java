@@ -1,8 +1,12 @@
 package com.parcial.backend.parcialwebspring.services.proxy;
 
 import com.parcial.backend.parcialwebspring.services.Facade;
+
+import org.springframework.stereotype.Service;
+
 import com.parcial.backend.parcialwebspring.entities.Usuario;
 
+@Service
 // Clase de login tambien llamado proxy
 public class Login implements ILogin {
     // Variables globales
