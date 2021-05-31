@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
@@ -64,26 +65,29 @@ public class UserController {
 
         System.out.println(username + "  " + password + " " + tipo);
         key = proxy.verifyLogin(user, username, password);
-        if(!key.equals("")){
+        if (!key.equals("")) {
             return ingresoAd();
-        }else{
+        } else {
             return home();
         }
     }
 
     @PostMapping(value = "/registro")
     public String asdf(
-            @RequestParam(name = "userRegistro", required = true, defaultValue = "no envio nada") String username,
-            @RequestParam(name = "passRegistro", required = true, defaultValue = "no envio nada") String password) {
+            @RequestParam(name = "userRegistro", required = true, defaultValue = "") String username,
+            @RequestParam(name = "passRegistro", required = true, defaultValue = "") String password,
+            RedirectAttributes redirectAttrs) {
         System.out.println(username + "  " + password);
 
         user = controlador.createUser("1", username, password);
-        if(user != null){
-            return home();
-        }else{
-            return home();
+        if (user != null) {
+            redirectAttrs.addFlashAttribute("mensaje", "Se ha registrado correctamente!!").addFlashAttribute("clase", "success");
+            return "redirect:/";
+        } else {
+            redirectAttrs.addFlashAttribute("mensaje", "Registro fallido, intente nuevamente").addFlashAttribute("clase", "success");
+            return "redirect:/";
         }
-       
+
     }
 
     @PostMapping(value = "/crearEmpresa")
@@ -94,11 +98,12 @@ public class UserController {
             @RequestParam(name = "direccion", required = true, defaultValue = "No envio") String direccion) {
 
         System.out.println(nombre + "  " + nit + " " + direccion);
-        String response = AESEncript.decrypt(controlador.action(AESEncript.encrypt("3/"+key+"/"+nombre+"/"+nit+"/"+direccion)));
+        String response = AESEncript.decrypt(
+                controlador.action(AESEncript.encrypt("3/" + key + "/" + nombre + "/" + nit + "/" + direccion)));
         System.out.println(response);
-        if(response.equals("La empresa se ha creado exitosamente")){
+        if (response.equals("La empresa se ha creado exitosamente")) {
             return "se creo correctamente";
-        }else{
+        } else {
             return "No se creo correctamente";
         }
 
