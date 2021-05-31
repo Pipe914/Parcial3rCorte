@@ -1,7 +1,8 @@
 package com.parcial.backend.parcialwebspring.repositories;
 
 import java.util.HashMap;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public class RelacionadorFactory {
     private HashMap key_user = new HashMap();
     private HashMap user_empresa = new HashMap();

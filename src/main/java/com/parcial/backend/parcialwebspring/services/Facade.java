@@ -229,6 +229,7 @@ public class Facade {
                 // Se guarda la empresa en su respectiva factory, se maneja como key el nit de
                 // la empresa y como value el obejto empresa
                 dataEmpresas.saveEmpresa(nit, empresa);
+                System.out.println(empresa.getNombre() + "  " + empresa.getNit());
                 // Se guarda la relacion entre el usuario y la empresa en su respectivo factory,
                 // se maneja como key el username del usuario y el nit de la empresa(se van
                 // juntando todas las empresas creadas en un solo dato separadas mediante un /

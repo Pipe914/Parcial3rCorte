@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import com.parcial.backend.parcialwebspring.entities.Componente;
 
+import org.springframework.stereotype.Repository;
+@Repository
 public class OfertaFactory {
     private HashMap list = new HashMap();
 
