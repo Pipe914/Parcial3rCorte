@@ -1,2 +1,2 @@
-web: java -jar target/src\main\java\com\parcial\backend\parcialwebspring\ParcialWebSpringApplication.java-1.0.0.jar
-src\main\java\com\parcial\backend\parcialwebspring\ParcialWebSpringApplication.java: main
+web: java -jar target/src/main/java/com/parcial/backend/parcialwebspring/ParcialWebSpringApplication.java-1.0.0.jar
+src/main/java/com/parcial/backend/parcialwebspring/ParcialWebSpringApplication.java: main
