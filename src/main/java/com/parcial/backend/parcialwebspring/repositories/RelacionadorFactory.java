@@ -4,9 +4,9 @@ import java.util.HashMap;
 import org.springframework.stereotype.Repository;
 @Repository
 public class RelacionadorFactory {
-    private HashMap key_user = new HashMap();
-    private HashMap user_empresa = new HashMap();
-    private HashMap user_oferta = new HashMap();
+    private HashMap<String, String> key_user = new HashMap<String, String>();
+    private HashMap<String, String> user_empresa = new HashMap<String, String>();
+    private HashMap<String, String> user_oferta = new HashMap<String, String>();
 
 //Metodos HashMap key_user
     public void saveKeyUsuario(String key, String value)

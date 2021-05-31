@@ -179,6 +179,7 @@ public class UserController {
         }
     }
 
+    
     @PostMapping(value = "/anadirEmpresaEmpresa")
     public String anadirEmpresaEmpresa(@RequestParam(name = "nit1", required = true) String nit1,
             @RequestParam(name = "nit2", required = true) String nit2, RedirectAttributes redirectAttrs) {

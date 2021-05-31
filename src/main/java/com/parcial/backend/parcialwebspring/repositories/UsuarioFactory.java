@@ -6,7 +6,7 @@ import com.parcial.backend.parcialwebspring.entities.Usuario;
 import org.springframework.stereotype.Repository;
 @Repository
 public class UsuarioFactory{
-    private HashMap listUsuario = new HashMap();
+    private HashMap<String, Usuario> listUsuario = new HashMap<String, Usuario>();
 
     public void saveUsuario(String username, Usuario user)
     {

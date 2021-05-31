@@ -7,7 +7,7 @@ import com.parcial.backend.parcialwebspring.entities.Componente;
 import org.springframework.stereotype.Repository;
 @Repository
 public class OfertaFactory {
-    private HashMap list = new HashMap();
+    private HashMap<String,Componente> list = new HashMap<String,Componente>();
 
     public void saveOferta(String id, Componente oferta) {
         list.put(id, oferta);
